@@ -1,0 +1,95 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <h2 class="text-center">Добавление текста</h2>
+
+  <div class="form-control"
+    [ngClass]="{invalid: form.get('category').touched && form.get('category').invalid}"
+    (mouseleave)=defineCategory()
+  >
+    <label for="category">Категория:</label>
+        <select id="category" formControlName="category">
+          <option value="basic">Базовые книги</option>
+          <option value="tribal_messianship">Родовое мессианство</option>
+          <option value="tfs_rus">Сборники речей</option>
+          <option value="tfs_quotes">Сборники цитат</option>
+          <option value="spiritual_world">О духовном мире</option>
+          <option value="others">Прочее</option>
+          <option value="bible">Библия</option>
+        </select>
+
+    <div
+      *ngIf="form.get('category').touched && form.get('category').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('category').errors.required">
+        Введите категорию
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+    [ngClass]="{invalid: form.get('book').touched && form.get('book').invalid}"
+  >
+    <label for="book">Книга:</label>
+    <select id="book" formControlName="book">
+      <option *ngIf="arr[1]" value="1">{{ arr[1] }}</option>
+      <option *ngIf="arr[2]" value="2">{{ arr[2] }}</option>
+      <option *ngIf="arr[3]" value="3">{{ arr[3] }}</option>
+      <option *ngIf="arr[4]" value="4">{{ arr[4] }}</option>
+      <option *ngIf="arr[5]" value="5">{{ arr[5] }}</option>
+      <option *ngIf="arr[6]" value="6">{{ arr[6] }}</option>
+      <option *ngIf="arr[7]" value="7">{{ arr[7] }}</option>
+      <option *ngIf="arr[8]" value="8">{{ arr[8] }}</option>
+      <option *ngIf="arr[9]" value="9">{{ arr[9] }}</option>
+      <option *ngIf="arr[10]" value="10">{{ arr[10] }}</option>
+    </select>
+
+    <div
+      *ngIf="form.get('book').touched && form.get('book').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('book').errors.required">
+        Введите книгу
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+    [ngClass]="{invalid: form.get('chapter').touched && form.get('chapter').invalid}"
+  >
+    <label for="chapter">Глава:</label>
+    <input id="chapter" type="text" formControlName="chapter">
+    <div
+      *ngIf="form.get('chapter').touched && form.get('chapter').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('chapter').errors.required">
+        Введите название главы
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+    [ngClass]="{invalid: form.get('section').touched && form.get('section').invalid}"
+  >
+    <label for="section">Раздел:</label>
+    <input id="section" type="text" formControlName="section">
+    <div
+      *ngIf="form.get('section').touched && form.get('section').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('section').errors.required">
+        Введите название раздела
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Текст:</label>
+    <quill-editor formControlName="text"></quill-editor>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || submitted">Добавить</button>
+
+</form>
+

@@ -1,0 +1,44 @@
+<div *ngIf="textItems.length; else loading">
+  <h2 class="text-center">Список текстов</h2>
+
+  <div class="form-control">
+    <input type="text" placeholder="Найти ..." [(ngModel)]="searchStr">
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Категория</th>
+      <th>Книга</th>
+      <th>Глава</th>
+      <th>Параграф</th>
+      <th>Редактировать</th>
+      <th>Удалить</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of textItems | sortingadmin: searchStr; let idx = index">
+      <td>{{ idx + 1 }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.book }}</td>
+      <td>{{ item.chapter }}</td>
+      <td>{{ item.section }}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]="['/admin','item', item.id ,'edit']">Редактировать</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="remove(item.id)">Удалить</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr />
+  <button [routerLink]="['/admin', 'add']" class="btn btn-primary">Добавить текст</button>
+</div>
+
+<ng-template #loading>
+  <h4 class="text-center">Загрузка списка. Не обязательно дожидаться загрузки этого списка, чтобы добавить ещё один текст...</h4>
+</ng-template>
+

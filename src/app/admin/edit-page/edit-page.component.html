@@ -1,0 +1,73 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <h2 class="text-center">Добавление текста</h2>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('category').touched && form.get('category').invalid}"
+  >
+    <label for="category">Категория:</label>
+    <input id="category" type="text" formControlName="category">
+    <div
+      *ngIf="form.get('category').touched && form.get('category').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('category').errors.required">
+        Введите категорию
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('book').touched && form.get('book').invalid}"
+  >
+    <label for="book">Книга:</label>
+    <input id="book" type="text" formControlName="book">
+
+    <div
+      *ngIf="form.get('book').touched && form.get('book').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('book').errors.required">
+        Введите книгу
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('chapter').touched && form.get('chapter').invalid}"
+  >
+    <label for="chapter">Глава:</label>
+    <input id="chapter" type="text" formControlName="chapter">
+    <div
+      *ngIf="form.get('chapter').touched && form.get('chapter').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('chapter').errors.required">
+        Введите название главы
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control"
+       [ngClass]="{invalid: form.get('section').touched && form.get('section').invalid}"
+  >
+    <label for="section">Раздел:</label>
+    <input id="section" type="text" formControlName="section">
+    <div
+      *ngIf="form.get('section').touched && form.get('section').invalid"
+      class="validation"
+    >
+      <small *ngIf="form.get('section').errors.required">
+        Введите название раздела
+      </small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Текст:</label>
+    <quill-editor formControlName="text"></quill-editor>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || submitted">Добавить</button>
+
+</form>

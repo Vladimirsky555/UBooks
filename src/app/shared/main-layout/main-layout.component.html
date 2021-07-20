@@ -1,0 +1,26 @@
+<div class="wrapper">
+<nav class="navbar bg-primary">
+     <ul>
+       <li routerLinkActive="active">
+         <a [routerLink]="['/']">Главная</a>
+       </li>
+       <li routerLinkActive="active">
+         <a [routerLink]="['/search']">Поиск</a>
+       </li>
+     </ul>
+   </nav>
+
+   <router-outlet></router-outlet>
+
+   <div class="footer">
+     <div class="copyright">
+       Материалы для чтения и изучения
+     </div>
+     <div class="atisda">
+       <p>&copy; Copy right 2021</p>
+     </div>
+   </div>
+</div>
+
+
+

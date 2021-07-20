@@ -1,0 +1,22 @@
+<div *ngIf="item$ | async as item; else loading">
+
+  <div class="cont">
+      <div class="text-center">
+        <h2>{{ item.chapter }}</h2>
+      </div>
+
+      <div class="text-center">
+        <h3>{{ item.section }}</h3>
+      </div>
+
+    <div>
+      <quill-view-html [content]="item.text | highlight: searchStr"></quill-view-html>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Текст загружается...</p>
+</ng-template>
+
+

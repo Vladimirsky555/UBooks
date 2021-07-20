@@ -1,0 +1,15 @@
+<div class="text-center">
+<!--  <h2>{{ item.category }}</h2>-->
+<!--  <h3>{{ item.book }}</h3>-->
+  <table>
+    <tbody>
+    <td><h4>{{ item.chapter }}</h4></td>
+    <td><h5>{{ item.section }}</h5></td>
+    <td>
+      <button
+      [routerLink]="['/item', item.id]" class="btn btn-dark">Открыть
+    </button>
+    </td>
+    </tbody>
+  </table>
+</div>

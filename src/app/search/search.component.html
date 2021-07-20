@@ -1,0 +1,43 @@
+<div class="search">
+  <h3>Поиск по текстам: </h3>
+  <div class="form-control">
+    <input type="text" placeholder="Найти ..." [(ngModel)]="searchStr">
+  </div>
+</div>
+<br />
+
+
+<div class="container"
+     *ngIf="items$ | async as items; else loading "
+     class="dashboard">
+  <h2 class="text-center">Список текстов</h2>
+  <p></p>
+  <div *ngIf="searchStr !== ''">
+  <table>
+    <thead>
+    <tr>
+      <th>№</th>
+      <th>Категория</th>
+      <th>Книга</th>
+      <th>Глава</th>
+      <th>Параграф</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of items | search: searchStr; let idx = index">
+      <td>{{ idx + 1 }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.book }}</td>
+      <td>{{ item.chapter }}</td>
+      <td class="pointer" [routerLink]="['/text', item.id]" (click)="setSearchStr(searchStr)">{{ item.section }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+<ng-template #loading>
+  <p class="text-center">Загрузка...</p>
+</ng-template>

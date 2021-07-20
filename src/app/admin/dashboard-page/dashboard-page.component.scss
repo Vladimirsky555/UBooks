@@ -1,0 +1,39 @@
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 12px;
+}
+
+table {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+table {
+  width:80%;
+}
+table, th, td {
+  margin: 0 auto;
+  table-layout: fixed;
+  max-width: 1000px;
+  width: 100%;
+  width: auto;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 3px;
+  text-align: left;
+}
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+table tr:nth-child(odd) {
+  background-color: #fff;
+}
+table th {
+  background-color:  #008080;
+  color: white;
+}
